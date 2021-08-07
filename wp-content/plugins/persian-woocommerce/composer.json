@@ -1,0 +1,5 @@
+{
+    "require": {
+        "morilog/jalali": "^3.1"
+    }
+}

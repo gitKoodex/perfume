@@ -1,0 +1,399 @@
+@font-face {
+    font-family: 'codex';
+    src: url('fonts/IRANSans.eot?#') format('eot'),  /* IE6–8 */
+    url('fonts/IRANSansWeb.woff2') format('woff'),  /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+    url('/fonts/IRANSans.ttf') format('truetype');  /* Saf3—5, Chrome4+, FF3.5, Opera 10+ */
+}
+@font-face {
+    font-family: 'codex';
+    font-weight:400;
+    src: url('fonts/IRANSans_Medium.eot?#') format('eot'),  /* IE6–8 */
+    url('fonts/IRANSansWebMedium.woff2') format('woff'),  /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+    url('fonts/IRANSans_Medium.ttf') format('truetype');  /* Saf3—5, Chrome4+, FF3.5, Opera 10+ */
+}
+@font-face {
+    font-family: 'codex';
+    font-weight:bold;
+    src: url('fonts/IRANSans_Bold.eot?#') format('eot'),  /* IE6–8 */
+    url('fonts/IRANSansWebBold.woff2') format('woff'),  /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+    url('fonts/IRANSans_Medium.ttf') format('truetype');  /* Saf3—5, Chrome4+, FF3.5, Opera 10+ */
+}
+@font-face {
+    font-family: 'codex';
+    font-weight:100;
+    src: url('fonts/IRANSansWebLight.woff2') format('woff');  /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+}
+@font-face {
+    font-family: 'BRoya';
+    src: url('fonts/BRoya.eot?#') format('eot'),  /* IE6–8 */
+    url('fonts/BRoya.woff') format('woff'),  /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+    url('fonts/BRoya.ttf') format('truetype');  /* Saf3—5, Chrome4+, FF3.5, Opera 10+ */
+}
+/* orver right bootstrap */
+.p-0{
+    padding:0px;
+}
+.p-5{
+    padding: 3rem;
+}
+.m-0{
+    margin: 0px;
+}
+.pt-5{
+    padding-top: 2.5rem;
+}
+.text-center{
+    text-align: center;
+}
+.justify-content-around {
+    -ms-flex-pack: distribute!important;
+    justify-content: space-around!important;
+}
+.justify-content-between {
+    -webkit-box-pack: justify!important;
+    -ms-flex-pack: justify!important;
+    justify-content: space-between!important;
+}
+/*
+--------------------------
+ ----------------------------
+ ----------------------------
+ */
+
+
+
+body{
+    font-family: 'codex' !important;
+
+}
+/*home page*/
+/*carousel*/
+#new-carousel,#smartblog-carousel{
+    direction: ltr;
+}
+.carousel-item img{
+    height: 27rem !important;
+}
+@media (min-width: 319px){
+    ul.carousel-inner{
+        padding: 0px !important;
+    }
+
+}
+.opis {
+    top: 25%;
+    font-weight: 700;
+    left: 20%;
+    width: 80%;
+    font-family: 'codex' !important;
+    font-size: 20px;
+    border: 0.5px solid #333;
+    padding: 15px;
+    letter-spacing: 0px;
+    color:purple;
+}
+.custom-paddind{
+    padding: 1.625rem 0.5rem !important;
+}
+.top-menu li.category{
+    padding: 1.4rem 0.5rem !important;
+}
+.top-menu li.category:hover{
+    background: #512a69;
+
+}
+#index .top-menu a[data-depth="0"] {
+    font-size: 1.1rem;
+    padding: 1.625rem 0.75rem;
+    color: #333333 !important;
+    font-family: 'codex' !important;
+    letter-spacing: 1px;
+    font-weight: 700;
+    transition: 0.4s;
+    width: 100%;
+    text-decoration: none;
+}
+#index .top-menu .sub-menu li>a{
+    font-size: 1rem;
+}
+@media (max-width: 991px) {
+    #index .top-menu a[data-depth="0"] {
+        font-size: 18px;
+        padding: 1.625rem 0.75rem;
+        color: #333333 !important;
+        font-family: 'codex' !important;
+        letter-spacing: 1px;
+        font-weight: 700;
+        transition: 0.4s;
+        width: 100%;
+        text-decoration: none;
+    }
+}
+.bannerproduct{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    width: 100%;
+    height: 100%;
+    padding: 1.0rem 2.5rem;
+}
+.absolute-center{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+}
+.absolute-buttom{
+    position: absolute;
+    left: 50%;
+    bottom: 3%;
+    transform: translate(-50%,-3%);
+}
+.bannerproduct img{
+    height: 80%;
+    width: auto;
+}
+
+.blog_inner{
+    text-align: right;
+    direction: rtl;
+}
+.d-none{
+    display: none !important;
+}
+.d-flex{
+    display: flex;
+}
+.justify-content-between {
+    -webkit-box-pack: justify!important;
+    -ms-flex-pack: justify!important;
+    justify-content: space-between!important;
+}
+.footerpadding{
+    padding: 1.5rem;
+}
+/*over wright*/
+
+.SliderNavigation a {
+    height: 90px !important;
+    width: 25px !important;
+    font-size: 0;
+    position: relative !important;
+    top: 50% !important;
+    font-weight: 300;
+    padding: 0;
+    color: #333333 !important;
+    display: inline-block;
+    cursor: pointer;
+    overflow: hidden;
+    -webkit-transition: all 0.3s;
+    color: #333333 !important;
+    -moz-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+}
+.clearfix .SliderNavigation a:hover {
+    background: transparent;
+    opacity: 1;
+    transition: 0.3s;
+    color: #333333 !important;
+    transform: scale(1.2);
+}
+.SliderNavigation a.next {
+    right: 36px;
+}
+.SliderNavigation a.prev {
+    left: 36px;
+}
+/*menu*/
+.menu ul{
+    list-style: none;
+}
+#header .header-top .menu > ul > li {
+    float: right;
+}
+.float-right{
+    float: right;
+}
+.remove-space{
+    padding: 0px;
+}
+.remove-space ul{
+    margin: 0px;
+    padding: 0px;
+}
+.bars-container{
+    padding: 1rem;
+}
+.js-top-menu.mobile ul li.category{
+    padding: 3px 0px !important;
+}
+.top-menu>li>.sub-menu {
+   position: absolute;
+}
+.top-menu>li>.sub-menu>li{
+    position: relative;
+    min-width: 15.5rem;
+}
+#header>.header-top .menu>ul>li:hover>.sub-menu {
+    top: 68px !important;
+    left:0px !important;
+    width: 100%;
+    display: flex !important;
+    flex-wrap: wrap;
+}
+#header>.header-top .menu>.top-menu>li>.sub-menu>li>.sub-menu{
+    position: absolute;
+    display: none !important;
+    top: 0px !important;
+    right: 10.1rem;
+    min-width: 14.1rem;
+    padding: 0px;
+}
+#header>.header-top .menu>.top-menu>li>.sub-menu>li:hover>.sub-menu{
+    display: block !important;
+}
+.header-top .menu .sub-menu{
+    overflow: visible;
+}
+/*home page*/
+    /*محصولات جدید*/
+    .dd-product-image img{
+        width: 2.5rem;
+    }
+    .products .product-thumbnail img {
+        width: 9.5rem;
+    }
+    .page-index .products .product-thumbnail img{
+        width: 100%;
+    }
+
+@media (min-width: 319px){
+
+        .SliderNavigation {
+           display: none;
+        }
+    }
+    @media (max-width: 589px){
+        .banner .content-banery {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform:  translate(-18%,-104%);
+            opacity: 1 !important;
+        }
+        .opis {
+            top: 25%;
+            font-weight: 700;
+            left: 20%;
+            width: 80%;
+            font-family: 'codex' !important;
+            font-size: 20px;
+            border: 0.5px solid #333;
+            padding: 15px;
+            letter-spacing: 0px;
+            color: purple;
+        }
+    }
+/*مقالات*/
+.single-post img{
+    width:100%;
+    height: auto;
+}
+
+    /*محصولات*/
+.single-product .site-main{
+    padding: 6.6rem 0px;
+}
+#article{
+    width: 25%;
+    background: white;
+    border: 1px solid #e0e0e0;
+    margin: auto;
+    box-shadow: 3px 3px 6px #ccc;
+}
+@media (min-width: 768px){
+
+    .single-product .site-main{
+        padding: 6.6rem 6.6rem;
+    }
+}
+.single-product .site-main article{
+    padding: 2.6rem 1.6rem;
+
+}
+.single-product .site-main article h1{
+    color:purple;
+}
+.woocommerce-product-gallery__image{
+    padding: 1rem 2.2rem;
+}
+.woocommerce div.product div.images img{
+    width: 100% !important;
+    margin: auto;
+}
+.single-product  .nav-links{
+    padding: 1rem 1.6rem;
+}
+.single-product  .posted_in{
+    display: none;
+}
+.single-product h2{
+    line-height: 4.1rem;
+    font-size: 2.5rem;
+    color: purple;
+    margin-right: 1.7rem;
+}
+.space-top{
+    padding-top: 10rem;
+}
+li.product{
+    text-align: center;
+}
+li.product a:link,nav.woocommerce-pagination a:link{
+    color:purple !important;
+}
+li.product .price,.woocommerce ul.products li.product .price{
+    color:#b5944d !important;
+}
+
+
+
+li.product img{
+    width: 6rem;
+}
+.woocommerce ul.products li.product a img{
+    width: 100% !important;
+}
+
+    /*widget*/
+.product_list_widget img{
+    width: 8px;
+}
+figure .woocommerce ul.products li.product a img{
+
+}
+
+/*blogs*/
+.blog-padding{
+    padding: 0px;
+}
+
+@media (min-width: 768px){
+
+    .blog-padding{
+        padding: 10px;
+    }
+}
+
+/*archive*/
+.p-m{
+    padding: 0px;
+}
+@media (min-width: 768px){
+
+    .p-m{
+        padding: 5rem;
+    }
+}

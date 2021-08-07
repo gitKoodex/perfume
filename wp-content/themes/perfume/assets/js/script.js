@@ -1,0 +1,47 @@
+$(function (){
+    var link = "<a href=''>طراحی و اجرا توسط کدکس</a>"
+    $("#ourlink").html(link);
+    $('#new-carousel-2').owlCarousel({
+        loop:true,
+        margin:10,
+        responsiveClass:true,
+        responsive:{
+            0:{
+                items:1,
+                nav:true
+            },
+            600:{
+                items:3,
+                nav:false
+            },
+            1000:{
+                items:5,
+                nav:true,
+                loop:false
+            }
+        }
+    });
+    $('#new-carousel-3').owlCarousel({
+        loop:true,
+        margin:10,
+        responsiveClass:true,
+        responsive:{
+            0:{
+                items:1,
+                nav:true
+            },
+            600:{
+                items:3,
+                nav:false
+            },
+            1000:{
+                items:5,
+                nav:true,
+                loop:false
+            }
+        }
+    });
+});
+$(window).load(function () {
+    $(".dd-loading-background").addClass('d-none');
+});
