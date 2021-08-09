@@ -11,6 +11,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-4 col-md-12 col-sm-12 links">
+                    <div class="d-flex">
                     <?php
                    if ( is_active_sidebar( 'sidebar-2' ) ) {
                         dynamic_sidebar( 'sidebar-2' );
@@ -61,7 +62,7 @@
 
                     }
                     ?>
-
+                    </div>
                 </div>
                 <div class="block_newsletter col-lg-4 col-md-12 col-sm-12">
                     <div class="row">

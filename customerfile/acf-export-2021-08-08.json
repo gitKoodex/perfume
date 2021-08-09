@@ -1,0 +1,112 @@
+[
+    {
+        "key": "group_608e5d864ba63",
+        "title": "home",
+        "fields": [
+            {
+                "key": "field_608e5d9e31279",
+                "label": "first slider",
+                "name": "first-slider",
+                "type": "image",
+                "instructions": "1920*700",
+                "required": 1,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "return_format": "array",
+                "preview_size": "full",
+                "library": "all",
+                "min_width": 1920,
+                "min_height": 700,
+                "min_size": "",
+                "max_width": 1920,
+                "max_height": 700,
+                "max_size": "1.1",
+                "mime_types": "jpg,jpeg,webd,png"
+            },
+            {
+                "key": "field_608e90f468d36",
+                "label": "sec-slider",
+                "name": "sec-slider",
+                "type": "image",
+                "instructions": "1920*700",
+                "required": 1,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "return_format": "array",
+                "preview_size": "full",
+                "library": "all",
+                "min_width": 1920,
+                "min_height": 700,
+                "min_size": "",
+                "max_width": 1920,
+                "max_height": 700,
+                "max_size": "1.1",
+                "mime_types": "jpg,jpeg,webd,png"
+            },
+            {
+                "key": "field_608e6c58f3905",
+                "label": "product with ground",
+                "name": "product-with-ground",
+                "type": "post_object",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "post_type": [
+                    "product"
+                ],
+                "taxonomy": [
+                    "product_cat:home-banner"
+                ],
+                "allow_null": 0,
+                "multiple": 1,
+                "return_format": "object",
+                "ui": 1
+            }
+        ],
+        "location": [
+            [
+                {
+                    "param": "page_template",
+                    "operator": "==",
+                    "value": "page-front.php"
+                }
+            ]
+        ],
+        "menu_order": 0,
+        "position": "normal",
+        "style": "default",
+        "label_placement": "top",
+        "instruction_placement": "label",
+        "hide_on_screen": [
+            "permalink",
+            "the_content",
+            "excerpt",
+            "discussion",
+            "comments",
+            "revisions",
+            "slug",
+            "author",
+            "format",
+            "page_attributes",
+            "featured_image",
+            "categories",
+            "tags",
+            "send-trackbacks"
+        ],
+        "active": true,
+        "description": ""
+    }
+]

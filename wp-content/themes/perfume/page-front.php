@@ -45,41 +45,19 @@ get_header('home');
                                                 'add_a_attr' => '0'
                                             );
                                             wp_nav_menu($args);
-                                            //                                                        wp_nav_menu(
-                                            //                                                            array(
-                                            //                                                                'theme_location' => 'menu-1',
-                                            //                                                                'menu_id'        => 'primary-menu',
-                                            //                                                                'container' => false,
-                                            //                                                                'items_wrap' => '<ul class="nav top-menu" data-depth="1">%3$s</ul>',
-                                            //                                                            )
-                                            //                                                        );
                                             ?>
-
-
                                         </div>
-                                        <script type="text/javascript">
-                                            console.log(false);
-                                            // var wishlistProductsIds = false;
-                                            // var loggin_required = "You must be logged in to manage your wishlist.";
-                                            // var added_to_wishlist = "The product was successfully added to your wishlist.";
-                                            // var mywishlist_url = "//webb.hekko24.pl/74_multi_cosmetics/en/module/blockwishlist/mywishlist";
-                                            // var baseDir = "https://webb.hekko24.pl/74_multi_cosmetics/";
-                                            //
-                                            // var isLoggedWishlist = false
-
-                                        </script>
                                         <div class="clearfix"></div>
                                     </div>
                                 </div>
                                 <div class="col-md-2 hidden-sm-down float-right remove-space" id="_desktop_logo">
-                                    <?php
-                                    wp_nav_menu(
-                                        array(
-                                            'theme_location' => 'menu-2',
-                                            'menu_id' => 'secoundry-menu',
-                                        )
-                                    );
-                                    ?>
+                                    <div>
+                                        <ul class="no-list-style">
+                                            <li>
+                                                <img src="<?=get_site_icon_url();?>" alt="">
+                                            </li>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -113,15 +91,6 @@ get_header('home');
 
 
     </header>
-
-
-    <aside id="notifications">
-        <div class="container">
-
-
-        </div>
-    </aside>
-
 
     <article id="wrapper">
 
@@ -162,12 +131,10 @@ get_header('home');
                                             <?php endif; ?>
                                             <figcaption class="caption">
                                                 <h2 class="display-1 text-uppercase"></h2>
-                                                <div class="caption-description"><p>
-                                                        <!--                                                        <a-->
-                                                        <!--                                                                href="-->
-                                                        <?php //echo esc_url( home_url( '/' ) ); ?><!--"-->
-                                                        <!--                                                                class="shop_now"> Shop now </a>-->
-                                                    </p></div>
+                                                <div class="caption-description">
+                                                        <?php the_field('first-slider-caption'); ?>
+
+                                                  </div>
                                             </figcaption>
                                         </a>
                                     </figure>
@@ -183,10 +150,8 @@ get_header('home');
                                             <figcaption class="caption">
                                                 <h2 class="display-1 text-uppercase"></h2>
                                                 <div class="caption-description"><p>
-                                                        <!--                                                        <a-->
-                                                        <!--                                                                href="-->
-                                                        <?php //echo esc_url( home_url( '/' ) ); ?><!--"-->
-                                                        <!--                                                                class="shop_now"> Shop now </a>-->
+                                                        <?php the_field('sec-slider-caption'); ?>
+
                                                     </p></div>
                                             </figcaption>
                                         </a>
@@ -209,49 +174,95 @@ get_header('home');
                                     <span class="sr-only">بعدی</span>
                                 </a>
                             </div>
-                        </div>.
+                        </div>
+                    </section>
+                </section>
+            </div>
+        </div>
+    </article>
                         <section id="coloreddevision">
-                        <div class="row d-block d-md-flex">
-                            <!--i am here-->
+                            <div class='container-fluid'>
+                                <div class='p-3'>
+                                    <div class='row row-eq-height'>
+                         <!--i am here-->
                             <?php
                              $featured_posts = get_field('product-with-ground');
-                             if( $featured_posts ): $counter = 1;?>
- 
-                                 <?php foreach( $featured_posts as $post ):
- 
-                                         // Setup this post for WP functions (variable must be named $post).
-                                         setup_postdata($post);
-                                         echo "
-                                 <div class=\"custom-banner-{$counter}  custome-banner position-relative p-3 col-12 col-md-4\">
-                                     <div class=\"position-relative full-cover\">
-                                         <img src=\"".esc_url( home_url( '/' ) )."wp-content/uploads/2021/04/unnamed.jpg\" alt=\"پس زمینه\" class=\"w-100\">
-                                     </div>
-                                     <div class=\"position-absolute product-on-image w-50\">
-                                          <img src=\"" . get_the_post_thumbnail_url() . "\" alt=\"محصول\">
-                                     </div>
-                                     <div class=\"mobile-relative desktop-absolute mobile-full-cover mobile-bg-white borderd desktop-center has-back-content\">";
-                                         echo get_the_title();
-                                         echo "<div class=\"buttons-banners\">بیشتر</div>";
-                                     echo"    
-                                     </div>
-                                 </div>";
-                                  $counter++; endforeach;
-                                 // Reset the global post object so that the rest of the page works correctly.
+                             if( $featured_posts ): $counter = 1;
+                               foreach( $featured_posts as $post ):
+                                   setup_postdata($post);
+                                        if($counter == 1){
+                                            $image_id = get_post_thumbnail_id();
+                                            $image_alt = get_post_meta($image_id, '_wp_attachment_image_alt', TRUE);
+                                            $image_title = get_the_title($image_id);
+                                            echo "
+                                                            <div class='col-12 col-md-6'>
+                                                                <a href='".get_permalink() ."'>
+                                                                <div class='product'>
+                                                                    <div class='product-img'>
+                                                                    <img src=\"" . get_the_post_thumbnail_url() . "\" alt=\"".$image_title."\">
+                                                                    </div>
+                                                                    <div class='product-title'>".
+                                                get_the_title()."
+                                                                    </div>
+                                                                </div>
+                                                                </a>
+                                                            </div>
+                                          ";
+                                        }
+                                if($counter == 2){
+                                    $image_id = get_post_thumbnail_id();
+                                    $image_alt = get_post_meta($image_id, '_wp_attachment_image_alt', TRUE);
+                                    $image_title = get_the_title($image_id);
+                                    echo "
+                                                            <div class='col-12 col-md-6'>
+                                                                <a href='".get_permalink() ."'>
+                                                                <div class='product'>
+                                                                    <div class='product-img'>
+                                                                    <img src=\"" . get_the_post_thumbnail_url() . "\" alt=\"".$image_title."\">
+                                                                    </div>
+                                                                    <div class='product-title'>".
+                                        get_the_title()."
+                                                                    </div>
+                                                                </div>
+                                                                </a>";
+
+                                }
+                                if($counter==3){
+                                    $image_id = get_post_thumbnail_id();
+                                    $image_alt = get_post_meta($image_id, '_wp_attachment_image_alt', TRUE);
+                                    $image_title = get_the_title($image_id);
+                                    echo "
+                                                                                                <div class='col-12 col-md-12 p-0'>
+                                                                                                    <a href='".get_permalink() ."'>
+                                                                                                    <div class='product'>
+                                                                                                        <div class='product-img'>
+                                                                                                        <img src=\"" . get_the_post_thumbnail_url() . "\" alt=\"".$image_title."\">
+                                                                                                        </div>
+                                                                                                        <div class='product-title'>".
+                                        get_the_title()."
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                    </a>
+                                                                                                </div>
+                                                                              
+                                                            </div>
+                                          ";
+                                }
+                                   $counter++;
+                               endforeach;
                                  wp_reset_postdata();
-                                 endif; ?>
-                                 <!--                            End here-->
- 
+                             endif; ?>
+                                </div>
+                                </div>
+                                </div>
                              </div>
-                             </section>
-                             <div class="row">
-                                 <div class="p-3">
-                                     <hr>
-                                 </div>
-                             </div>
+                        </section>
+
+
                         <article class="featured-products clearfix" id="cologne">
                             <div class="linia_tytul">
                                 <div class="tytuly">
-                                    ادکلن های جدید
+                                   <?=the_field('first-product-cat')?>
                                 </div>
                                 <div class="SliderNavigation">
                                     <a class="btn prev slider_new_prev">&nbsp;</a>
@@ -262,6 +273,19 @@ get_header('home');
                                 <!-- Define Number of product for SLIDER -->
                                 <ul id="new-carousel" class="bestseller_grid product_list grid row gridcount">
                                     <?php
+                                    $firstProductCat=strval(get_field("first-product-cat"));
+//                                    $args = array(
+//                                        'post_type' => 'product',
+//                                        'product_cat_id'=>'21',
+//                                        'posts_per_page' => 7,
+//                                        'tax_query'             => array(
+//                                            array(
+//                                                'taxonomy'      => 'product_cat',
+//                                                'field' => 'term_id', //This is optional, as it defaults to 'term_id'
+//                                                'terms'         => 21,
+//                                            ),
+//                                    )
+//                                    );
                                     $args = array(
                                         'post_type' => 'product',
                                         'product_cat_id'=>'21',
@@ -269,244 +293,8 @@ get_header('home');
                                         'tax_query'             => array(
                                             array(
                                                 'taxonomy'      => 'product_cat',
-                                                'field' => 'term_id', //This is optional, as it defaults to 'term_id'
-                                                'terms'         => 21,
-                                            ),
-                                    )
-                                    );
-                                    $productsLoop = new WP_Query($args);
-                                    if ($productsLoop->have_posts()) {
-                                        $counter = 1;
-                                        while ($productsLoop->have_posts()) : $productsLoop->the_post();
-                                            echo "
-                                    
-                                    <li class=\"item\">
-                                        <article class=\"product-miniature js-product-miniature\" data-id-product=\"{$productsLoop->ID}\"
-                                                 data-id-product-attribute=\"{$productsLoop->ID}\" itemscope itemtype=\"http://schema.org/Product\">
-                                            <div class=\"thumbnail-container\">
-                                                <div class=\"dd-product-image\">
-
-                                                    <a href=\"" . get_permalink() . "\"
-                                                       class=\"thumbnail product-thumbnail\">
-                                                        <img
-                                                                class=\"ddproduct-img1\"
-                                                                src=\"" . get_the_post_thumbnail_url() . "\"
-                                                                alt=\"" . get_the_title() . "\"
-                                                                data-full-size-image-url=\"" . get_the_post_thumbnail_url() . "\"
-                                                        >
-                                                        <img class=\"drugi_image img-responsive\" src=\"" . get_the_post_thumbnail_url() . "\"
-                                                             data-full-size-image-url=\"" . get_the_post_thumbnail_url() . "\"
-                                                             alt=\"" . get_the_title() . "\"/>
-
-                                                    </a>
-
-
-                                                    <ul class=\"product-flags\">
-                                                        <li class=\"new\">جدید</li>
-                                                    </ul>
-
-                                                </div>
-
-                                                <div class=\"product-desc\">
-                                                    <div class=\"product-description\">
-
-                                                        <h3 class=\"h3 product-title\" itemprop=\"name\"><a
-                                                                    href=\"" . get_permalink() . "\">" . get_the_title() . "
-                                                                </a></h3>
-
-
-                                                        <div class=\"product-price-and-shipping\">
-
-
-                                                            <span class=\"sr-only\">Price</span>
-                                                            <span itemprop=\"price\" class=\"price\">" . get_post_meta(get_the_ID(), '_regular_price', true) . "</span>
-
-
-                                                        </div>
-
-                                                        <div class=\"hook-reviews\">
-                                                            <div class=\"comments_note\" itemprop=\"aggregateRating\" itemscope
-                                                                 itemtype=\"https://schema.org/AggregateRating\">
-                                                                <div class=\"star_content clearfix\">
-                                                                    <div class=\"star star_on\"></div>
-                                                                    <div class=\"star star_on\"></div>
-                                                                    <div class=\"star star_on\"></div>
-                                                                    <div class=\"star star_on\"></div>
-                                                                    <div class=\"star star_on\"></div>
-                                                                    <meta itemprop=\"worstRating\" content=\"0\"/>
-                                                                    <meta itemprop=\"ratingValue\" content=\"5\"/>
-                                                                    <meta itemprop=\"bestRating\" content=\"5\"/>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class=\"highlighted-informations\">
-                                                        <div class=\"buttons-actions_align\">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </article>                        
-                                 </li>";
-                                        endwhile;
-                                    } else {
-                                        echo __('محصولی برای نمایش موجود نیست!');
-                                    }
-                                    wp_reset_postdata();
-                                    ?>
-
-                                </ul>
-
-                            </div>
-                            <div class="view_more">
-                                <a class="all-product-link" href="product-category/ادکلن/">
-                                    مشاهده همه ادکلن ها
-                                </a>
-                            </div>
-
-                    </article>
-
-
-                        <article class="featured-products clearfix" id="espray">
-                            <div class="linia_tytul">
-                                <div class="tytuly">
-                                    اسپری های جدید
-                                </div>
-                                <div class="SliderNavigation">
-                                    <a class="btn prev slider_new_prev">&nbsp;</a>
-                                    <a class="btn next slider_new_next">&nbsp;</a>
-                                </div>
-                            </div>
-                            <div class="products">
-                                <!-- Define Number of product for SLIDER -->
-                                <ul id="new-carousel-2" class="bestseller_grid product_list grid row gridcount ltr">
-                                    <?php
-                                    $args = array(
-                                        'post_type' => 'product',
-                                        'posts_per_page' => 7,
-                                        'tax_query'             => array(
-                                            array(
-                                                'taxonomy'      => 'product_cat',
-                                                'field' => 'term_id', //This is optional, as it defaults to 'term_id'
-                                                'terms'         => 24,
-                                            ),
-                                        ),
-                                    );
-                                    $productsLoop = new WP_Query($args);
-                                    if ($productsLoop->have_posts()) {
-                                        $counter = 1;
-                                        while ($productsLoop->have_posts()) : $productsLoop->the_post();
-                                            echo "
-                                    
-                                    <li class=\"item\">
-                                        <article class=\"product-miniature js-product-miniature\" data-id-product=\"{$productsLoop->ID}\"
-                                                 data-id-product-attribute=\"{$productsLoop->ID}\" itemscope itemtype=\"http://schema.org/Product\">
-                                            <div class=\"thumbnail-container\">
-                                                <div class=\"dd-product-image\">
-
-                                                    <a href=\"" . get_permalink() . "\"
-                                                       class=\"thumbnail product-thumbnail\">
-                                                        <img
-                                                                class=\"ddproduct-img1\"
-                                                                src=\"" . get_the_post_thumbnail_url() . "\"
-                                                                alt=\"" . get_the_title() . "\"
-                                                                data-full-size-image-url=\"" . get_the_post_thumbnail_url() . "\"
-                                                        >
-                                                        <img class=\"drugi_image img-responsive\" src=\"" . get_the_post_thumbnail_url() . "\"
-                                                             data-full-size-image-url=\"" . get_the_post_thumbnail_url() . "\"
-                                                             alt=\"" . get_the_title() . "\"/>
-
-                                                    </a>
-
-
-                                                    <ul class=\"product-flags\">
-                                                        <li class=\"new\">جدید</li>
-                                                    </ul>
-
-                                                </div>
-
-                                                <div class=\"product-desc\">
-                                                    <div class=\"product-description\">
-
-                                                        <h3 class=\"h3 product-title\" itemprop=\"name\"><a
-                                                                    href=\"" . get_permalink() . "\">" . get_the_title() . "
-                                                                </a></h3>
-
-
-                                                        <div class=\"product-price-and-shipping\">
-
-
-                                                            <span class=\"sr-only\">Price</span>
-                                                            <span itemprop=\"price\" class=\"price\">" . get_post_meta(get_the_ID(), '_regular_price', true) . "</span>
-
-
-                                                        </div>
-
-                                                        <div class=\"hook-reviews\">
-                                                            <div class=\"comments_note\" itemprop=\"aggregateRating\" itemscope
-                                                                 itemtype=\"https://schema.org/AggregateRating\">
-                                                                <div class=\"star_content clearfix\">
-                                                                    <div class=\"star star_on\"></div>
-                                                                    <div class=\"star star_on\"></div>
-                                                                    <div class=\"star star_on\"></div>
-                                                                    <div class=\"star star_on\"></div>
-                                                                    <div class=\"star star_on\"></div>
-                                                                    <meta itemprop=\"worstRating\" content=\"0\"/>
-                                                                    <meta itemprop=\"ratingValue\" content=\"5\"/>
-                                                                    <meta itemprop=\"bestRating\" content=\"5\"/>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class=\"highlighted-informations\">
-                                                        <div class=\"buttons-actions_align\">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </article>                        
-                                 </li>";
-                                        endwhile;
-                                    } else {
-                                        echo __('محصولی برای نمایش موجود نیست!');
-                                    }
-                                    wp_reset_postdata();
-                                    ?>
-
-                                </ul>
-
-                            </div>
-                            <div class="view_more">
-                                <a class="all-product-link" href="/product-category/اسپری/">
-                                    مشاهده همه اسپری های کوبکو
-                                </a>
-                            </div>
-
-                        </article>
-
-
-                        <article class="featured-products clearfix" id="bodysplash">
-                            <div class="linia_tytul">
-                                <div class="tytuly">
-                                    بادی اسپلش های جدید
-                                </div>
-                                <div class="SliderNavigation">
-                                    <a class="btn prev slider_new_prev">&nbsp;</a>
-                                    <a class="btn next slider_new_next">&nbsp;</a>
-                                </div>
-                            </div>
-                            <div class="products">
-                                <!-- Define Number of product for SLIDER -->
-                                <ul id="new-carousel-3" class="bestseller_grid product_list grid row gridcount ltr">
-                                    <?php
-                                    $args = array(
-                                        'post_type' => 'product',
-                                        'posts_per_page' => 7,
-                                        'tax_query'             => array(
-                                            array(
-                                                'taxonomy'      => 'product_cat',
-                                                'field' => 'term_id', //This is optional, as it defaults to 'term_id'
-                                                'terms'         => 22,
+                                                'field'         => 'slug', //This is optional, as it defaults to 'term_id'
+                                                'terms'         => $firstProductCat,
                                             ),
                                         )
                                     );
@@ -595,8 +383,276 @@ get_header('home');
 
                             </div>
                             <div class="view_more">
-                                <a class="all-product-link" href="/product-category/بادی-اسپلش/">
-                                    مشاهده همه بادی اسپلش کوبکو
+                                <a class="all-product-link" href="product-category/<?=get_field("first-product-cat")?>/">
+مشاهده همه
+                                    <?=get_field("first-product-cat")?>
+                                </a>
+                            </div>
+
+                    </article>
+
+
+                        <article class="featured-products clearfix" id="espray">
+                            <div class="linia_tytul">
+                                <div class="tytuly">
+                                    <?=the_field('sec-product-cat')?>
+                                </div>
+                                <div class="SliderNavigation">
+                                    <a class="btn prev slider_new_prev">&nbsp;</a>
+                                    <a class="btn next slider_new_next">&nbsp;</a>
+                                </div>
+                            </div>
+                            <div class="products">
+                                <!-- Define Number of product for SLIDER -->
+                                <ul id="new-carousel-2" class="bestseller_grid product_list grid row gridcount ltr">
+                                    <?php
+                                    $sectProductCat = get_field("sec-product-cat");
+//                                    $args = array(
+//                                        'post_type' => 'product',
+//                                        'posts_per_page' => 7,
+//                                        'tax_query'             => array(
+//                                            array(
+//                                                'taxonomy'      => 'product_cat',
+//                                                'field' => 'term_id', //This is optional, as it defaults to 'term_id'
+//                                                'terms'         => 24,
+//                                            ),
+//                                        ),
+//                                    );
+                                    $args = array(
+                                        'post_type' => 'product',
+                                        'product_cat_id'=>'21',
+                                        'posts_per_page' => 7,
+                                        'tax_query'             => array(
+                                            array(
+                                                'taxonomy'      => 'product_cat',
+                                                'field'         => 'slug', //This is optional, as it defaults to 'term_id'
+                                                'terms'         => $sectProductCat,
+                                            ),
+                                        )
+                                    );
+                                    $productsLoop = new WP_Query($args);
+                                    if ($productsLoop->have_posts()) {
+                                        $counter = 1;
+                                        while ($productsLoop->have_posts()) : $productsLoop->the_post();
+                                            echo "
+                                    
+                                    <li class=\"item\">
+                                        <article class=\"product-miniature js-product-miniature\" data-id-product=\"{$productsLoop->ID}\"
+                                                 data-id-product-attribute=\"{$productsLoop->ID}\" itemscope itemtype=\"http://schema.org/Product\">
+                                            <div class=\"thumbnail-container\">
+                                                <div class=\"dd-product-image\">
+
+                                                    <a href=\"" . get_permalink() . "\"
+                                                       class=\"thumbnail product-thumbnail\">
+                                                        <img
+                                                                class=\"ddproduct-img1\"
+                                                                src=\"" . get_the_post_thumbnail_url() . "\"
+                                                                alt=\"" . get_the_title() . "\"
+                                                                data-full-size-image-url=\"" . get_the_post_thumbnail_url() . "\"
+                                                        >
+                                                        <img class=\"drugi_image img-responsive\" src=\"" . get_the_post_thumbnail_url() . "\"
+                                                             data-full-size-image-url=\"" . get_the_post_thumbnail_url() . "\"
+                                                             alt=\"" . get_the_title() . "\"/>
+
+                                                    </a>
+
+
+                                                    <ul class=\"product-flags\">
+                                                        <li class=\"new\">جدید</li>
+                                                    </ul>
+
+                                                </div>
+
+                                                <div class=\"product-desc\">
+                                                    <div class=\"product-description\">
+
+                                                        <h3 class=\"h3 product-title\" itemprop=\"name\"><a
+                                                                    href=\"" . get_permalink() . "\">" . get_the_title() . "
+                                                                </a></h3>
+
+
+                                                        <div class=\"product-price-and-shipping\">
+
+
+                                                            <span class=\"sr-only\">Price</span>
+                                                            <span itemprop=\"price\" class=\"price\">" . get_post_meta(get_the_ID(), '_regular_price', true) . "</span>
+
+
+                                                        </div>
+
+                                                        <div class=\"hook-reviews\">
+                                                            <div class=\"comments_note\" itemprop=\"aggregateRating\" itemscope
+                                                                 itemtype=\"https://schema.org/AggregateRating\">
+                                                                <div class=\"star_content clearfix\">
+                                                                    <div class=\"star star_on\"></div>
+                                                                    <div class=\"star star_on\"></div>
+                                                                    <div class=\"star star_on\"></div>
+                                                                    <div class=\"star star_on\"></div>
+                                                                    <div class=\"star star_on\"></div>
+                                                                    <meta itemprop=\"worstRating\" content=\"0\"/>
+                                                                    <meta itemprop=\"ratingValue\" content=\"5\"/>
+                                                                    <meta itemprop=\"bestRating\" content=\"5\"/>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class=\"highlighted-informations\">
+                                                        <div class=\"buttons-actions_align\">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </article>                        
+                                 </li>";
+                                        endwhile;
+                                    } else {
+                                        echo __('محصولی برای نمایش موجود نیست!');
+                                    }
+                                    wp_reset_postdata();
+                                    ?>
+
+                                </ul>
+
+                            </div>
+                            <div class="view_more">
+                                <a class="all-product-link" href="/product-category/<?=sanitize_title_with_dashes(the_field('sec-product-cat'));?>/">
+                                    مشاهده همه
+                                    <?=get_field("sec-product-cat");?>
+                                    <?=get_bloginfo('name')?>
+                                </a>
+                            </div>
+
+                        </article>
+
+
+                        <article class="featured-products clearfix" id="bodysplash">
+                            <div class="linia_tytul">
+                                <div class="tytuly">
+                                    <?=the_field('third-product-cat')?>
+                                </div>
+                                <div class="SliderNavigation">
+                                    <a class="btn prev slider_new_prev">&nbsp;</a>
+                                    <a class="btn next slider_new_next">&nbsp;</a>
+                                </div>
+                            </div>
+                            <div class="products">
+                                <!-- Define Number of product for SLIDER -->
+                                <ul id="new-carousel-3" class="bestseller_grid product_list grid row gridcount ltr">
+                                    <?php
+                                    $thirdProductCat = get_field("third-product-cat");
+//                                    $args = array(
+//                                        'post_type' => 'product',
+//                                        'posts_per_page' => 7,
+//                                        'tax_query'             => array(
+//                                            array(
+//                                                'taxonomy'      => 'product_cat',
+//                                                'field' => 'term_id', //This is optional, as it defaults to 'term_id'
+//                                                'terms'         => 22,
+//                                            ),
+//                                        )
+//                                    );
+
+                                    $args = array(
+                                        'post_type' => 'product',
+                                        'product_cat_id'=>'21',
+                                        'posts_per_page' => 7,
+                                        'tax_query'             => array(
+                                            array(
+                                                'taxonomy'      => 'product_cat',
+                                                'field'         => 'slug', //This is optional, as it defaults to 'term_id'
+                                                'terms'         => $thirdProductCat,
+                                            ),
+                                        )
+                                    );
+                                    $productsLoop = new WP_Query($args);
+                                    if ($productsLoop->have_posts()) {
+                                        $counter = 1;
+                                        while ($productsLoop->have_posts()) : $productsLoop->the_post();
+                                            echo "
+                                    
+                                    <li class=\"item\">
+                                        <article class=\"product-miniature js-product-miniature\" data-id-product=\"{$productsLoop->ID}\"
+                                                 data-id-product-attribute=\"{$productsLoop->ID}\" itemscope itemtype=\"http://schema.org/Product\">
+                                            <div class=\"thumbnail-container\">
+                                                <div class=\"dd-product-image\">
+
+                                                    <a href=\"" . get_permalink() . "\"
+                                                       class=\"thumbnail product-thumbnail\">
+                                                        <img
+                                                                class=\"ddproduct-img1\"
+                                                                src=\"" . get_the_post_thumbnail_url() . "\"
+                                                                alt=\"" . get_the_title() . "\"
+                                                                data-full-size-image-url=\"" . get_the_post_thumbnail_url() . "\"
+                                                        >
+                                                        <img class=\"drugi_image img-responsive\" src=\"" . get_the_post_thumbnail_url() . "\"
+                                                             data-full-size-image-url=\"" . get_the_post_thumbnail_url() . "\"
+                                                             alt=\"" . get_the_title() . "\"/>
+
+                                                    </a>
+
+
+                                                    <ul class=\"product-flags\">
+                                                        <li class=\"new\">جدید</li>
+                                                    </ul>
+
+                                                </div>
+
+                                                <div class=\"product-desc\">
+                                                    <div class=\"product-description\">
+
+                                                        <h3 class=\"h3 product-title\" itemprop=\"name\"><a
+                                                                    href=\"" . get_permalink() . "\">" . get_the_title() . "
+                                                                </a></h3>
+
+
+                                                        <div class=\"product-price-and-shipping\">
+
+
+                                                            <span class=\"sr-only\">Price</span>
+                                                            <span itemprop=\"price\" class=\"price\">" . get_post_meta(get_the_ID(), '_regular_price', true) . "</span>
+
+
+                                                        </div>
+
+                                                        <div class=\"hook-reviews\">
+                                                            <div class=\"comments_note\" itemprop=\"aggregateRating\" itemscope
+                                                                 itemtype=\"https://schema.org/AggregateRating\">
+                                                                <div class=\"star_content clearfix\">
+                                                                    <div class=\"star star_on\"></div>
+                                                                    <div class=\"star star_on\"></div>
+                                                                    <div class=\"star star_on\"></div>
+                                                                    <div class=\"star star_on\"></div>
+                                                                    <div class=\"star star_on\"></div>
+                                                                    <meta itemprop=\"worstRating\" content=\"0\"/>
+                                                                    <meta itemprop=\"ratingValue\" content=\"5\"/>
+                                                                    <meta itemprop=\"bestRating\" content=\"5\"/>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class=\"highlighted-informations\">
+                                                        <div class=\"buttons-actions_align\">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </article>                        
+                                 </li>";
+                                        endwhile;
+                                    } else {
+                                        echo __('محصولی برای نمایش موجود نیست!');
+                                    }
+                                    wp_reset_postdata();
+                                    ?>
+
+                                </ul>
+
+                            </div>
+                            <div class="view_more">
+                                <a class="all-product-link" href="/product-category/<?=sanitize_title_with_dashes($thirdProductCat);?>/">
+                                    مشاهده همه
+                                    <?=get_field("sec-product-cat");?>
+                                    <?=get_bloginfo('name')?>
                                 </a>
                             </div>
 
@@ -606,7 +662,8 @@ get_header('home');
                         <div id="smartblog_block" class="block products_block  clearfix">
                             <div class="linia_tytul">
                                 <div class="tytuly">
-                                    <a href="category/blogs/">در باره بادی اسپلش بیشتر بدانید!</a>
+                                    <a href="/blog/"> <?=the_field('blog-title')?>
+                                   </a>
                                 </div>
                             </div>
                             <div class="SliderNavigation absolute-buttom w-100 d-flex justify-content-between">
@@ -617,9 +674,8 @@ get_header('home');
                                 <div id="smartblog-carousel" class="owl-carousel product_list">
                                     <?php
                                     $args = array(
-                                        'cat' => '20',
                                         'post_type' => 'post',
-                                        'posts_per_page' => -1
+                                        'posts_per_page' => 4
                                     );
                                     $loop = new WP_Query($args);
                                     if ($loop->have_posts()) {
